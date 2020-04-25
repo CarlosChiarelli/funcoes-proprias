@@ -18,10 +18,20 @@ def mostrarTodasColsJupyter(nCols=1000, nLinhas=1000):
     #    'chained_assignment': None   # Controls SettingWithCopyWarning
     #}
 }
-
     for category, option in options.items():
         for op, value in option.items():
             set_option(f'{category}.{op}', value)  # Python 3.6+
+
+def temaPlot():
+    # configura um tema dos graficos para o fundo dark do jupyter notebook
+    import matplotlib.pyplot as plt
+    from matplotlib import style
+    plt.style.use('classic')
+
+def configuraJupyter():
+    # seta mostrar numero de colunas e tema plots para fundo dark
+    mostrarTodasColsJupyter()
+    temaPlot()
 
 def dfExploracao(df):
     # retorna df com nomes, tipos, percentual de NAs e contagem unicos da coluna
