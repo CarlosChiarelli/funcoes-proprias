@@ -39,3 +39,22 @@ def plotObjCols(df, numColsJuntas=2, tamanho=1):
 
     print('CONTAGEM DAS COLUNAS OBJECT')
     plt.show()
+
+def plotNumVsNumReg(df):
+    # plota matriz de dispersao com regressao
+    from scipy.stats import pearsonr
+    from seaborn import PairGrid,distplot,regplot
+    import matplotlib.pyplot as plt
+
+    def reg_coef(x,y,label=None,color=None,**kwargs):
+        ax = plt.gca()
+        r,p = pearsonr(x,y)
+        ax.annotate('r = {:.2f}'.format(r), xy=(0.5,0.5), xycoords='axes fraction', ha='center')
+        ax.set_axis_off()
+
+    print('COLUNAS NUMERICAS - REGRESSÃO')
+    g = PairGrid(iris)
+    g.map_diag(distplot)
+    g.map_lower(regplot)
+    g.map_upper(reg_coef)
+    plt.show()
