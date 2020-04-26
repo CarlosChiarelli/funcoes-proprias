@@ -53,7 +53,7 @@ def plotNumVsNumReg(df):
         ax.set_axis_off()
 
     print('COLUNAS NUMERICAS - REGRESSÃO')
-    g = PairGrid(iris)
+    g = PairGrid(df)
     g.map_diag(distplot)
     g.map_lower(regplot)
     g.map_upper(reg_coef)
