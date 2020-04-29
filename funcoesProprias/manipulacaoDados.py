@@ -55,3 +55,33 @@ def limpaNomesCols(df, subEspacoUnderl = False):
         nomesCols = [x.lower().lstrip().rstrip().replace(' ','_') for x in df.columns]
 
     return nomesCols
+
+def removeAcento(text):
+    # recebe uma string, remove acentuação e retorna ela
+    import unicodedata
+
+    try:
+        text = unicode(text, 'utf-8')
+    except NameError: # unicode is a default on python 3
+        pass
+
+    text = unicodedata.normalize('NFD', text)\
+           .encode('ascii', 'ignore')\
+           .decode("utf-8")
+
+    return str(text)
+
+def limpaNomesColsPart2(listaNomesCols):
+    # recebe uma lista com nome das colunas
+    # remove caracteres especiais
+    from re import sub
+
+    # lista com nomes das colunas corrigidos
+    nomesLimpos = []
+
+    for x in listaNomesCols:
+        aux = removeAcento(x).replace('%','porcent').replace(' ','_')
+        aux = sub('\W','',aux)
+        nomesLimpos.append(aux)
+
+    return nomesLimpos
