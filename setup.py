@@ -26,7 +26,7 @@ setup(name='funcoesProprias',
       license='MIT',
       packages=['funcoesProprias'],
       install_requires=['pandas >= 1.0.3', 'numpy >= 1.18.2', 'matplotlib >= 3.2.1',
-                        'seaborn >= 0.10.0', 'scipy >= 1.4.1', 're >= 2.2.1', 'unicodedata >= 11.0.0'],
+                        'seaborn >= 0.10.0', 'scipy >= 1.4.1'],
       zip_safe=False)
 
 # from setuptools import setup
