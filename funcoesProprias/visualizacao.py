@@ -58,3 +58,25 @@ def plotNumVsNumReg(df):
     g.map_lower(regplot)
     g.map_upper(reg_coef)
     plt.show()
+
+def plotaDistribuicaoUniVar(dados, tamanho=1):
+    # recebe uma coluna de DF e plota distribuição histograma, boxplot e qqplot
+    import matplotlib.pyplot as plt
+    from seaborn import distplot, boxplot
+    from seaborn import set as setarTamanho
+    from statsmodels.api import qqplot
+    #%matplotlib inline
+    from IPython.core.pylabtools import figsize
+
+    figsize(12*tamanho, 8*tamanho)
+    setarTamanho()
+
+    fig, axs = plt.subplots(2,1)
+    # histograma e boxplot
+    distplot(dados, bins=25, color='red', ax=axs[0])
+    boxplot(dados, color='red', ax=axs[1])
+
+    fig.show()
+
+    # grafico de quartis teorico (x) Vs (y) real
+    qqplot(dados, fit=True, line='45');
